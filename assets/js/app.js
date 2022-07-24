@@ -5,7 +5,11 @@
 
 /* #12.2 - Prendo il mio div con la text-area dove l'utente digita */
 const fromText = document.querySelector(".from-text") // querySelector è più specifico e va a pescare proprio la mia text area nel div
-console.log(fromText); // #12.3 - Verifico il div che ho preso
+/* console.log(fromText); */ // #12.3 - Verifico il div che ho preso
+
+/* #14 - Prendo il mio div con la textarea del risultato traduzione (to-text) */
+toText = document.querySelector(".to-text")
+/* console.log(toText); */ // #14.1 - Verifica della mia costante in console
 
 
 /* #1 - Prendo il tag select, quello con le opzioni linguistiche  */
@@ -56,6 +60,8 @@ translateBtn.addEventListener("click", () => {
     let apiURL = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}` // #13.1 - Cambio i parametri della mia query 
     /* #13.2 - Avvio il fetch per la mia api con le promise  */
     fetch(apiURL).then(res => res.json()).then(data => {
-        console.log(data); // #13.3 - Verifico il mio responso. dentro a responseData in effetti, la mia variabile "translatedText" ha tradotto il testo
+        // #13.3 - res è il mio responso e viene richiamato e salvato come file json
+        console.log(data); // #13.4 - Verifico il mio responso. dentro a responseData in effetti, la mia variabile "translatedText" ha tradotto il testo
+        toText.value = data.responseData.translatedText // #14.2 - Alla mia textarea riservata al risultato aggiungo il valore della mia traduzione
     })
 })
