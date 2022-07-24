@@ -26,11 +26,52 @@
                 <!-- Area del risultato -->
                 <textarea class="from-to" placeholder="Translation" readonly disabled></textarea>
             </div>
+            <!-- /.controls -->            
+            <ul class="controls">
+                <!-- /.row zona input utente -->                
+                <li class="row from">
+                    <!-- Icone di ascolta e copia -->
+                    <div class="icons">
+                        <!-- Icona volume -->
+                        <i class="fa-solid fa-volume-high"></i>
+                        <!-- Icona Copy -->
+                        <i class="fa-solid fa-copy"></i>
+                    </div>
+                    <!-- Opzioni scelta linguistica -->
+                    <select>
+                        <option value="en-US">English</option>
+                        <option value="it-IT">Italian</option>
+                        <option value="es-ES">Spanish</option>
+                        <option value="fr-FR">French</option>
+                    </select>
+                </li>
+                <!-- Tasto per traduzione -->
+                <li class="exchange">
+                    <i class="fa-solid fa-right-left"></i>
+                </li>
+                <!-- /.row zona Risultato -->
+                <li class="row to">
+                    <!-- Opzioni scelta linguistica -->
+                    <select>
+                        <option value="fr-FR">French</option>     
+                        <option value="es-ES">Spanish</option>  
+                        <option value="it-IT">Italian</option>                                                                 
+                        <option value="en-US">English</option>
+                    </select>                    
+                    <!-- Icone di ascolta e copia -->
+                    <div class="icons">
+                        <!-- Icona volume -->
+                        <i class="fa-solid fa-volume-high"></i>
+                        <!-- Icona Copy -->
+                        <i class="fa-solid fa-copy"></i>
+                    </div>
+                </li>
+            </ul>
         </div>
+        <!-- Button con evento per il translate  -->
+        <button>Translate Text</button>
     </div>
     
-
-
     <!-- Link a JS -->
     <script src='./assets/js/app.js'></script>
 </body>
