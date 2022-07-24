@@ -28,6 +28,19 @@ body {
     padding: 30px;
 }
 
+.container button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    background: #5372f0;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+}
+
 /*#region Wrapper Rules */
 .wrapper {
     border: 1px solid #bbb;
@@ -57,20 +70,28 @@ body {
 /*#endregion text-input Rules */
 
 /*#region Controls icons Rules */
-.controls, li, .icons {
+
+/* Common rules per il control */
+.controls, li, .icons, .icons i {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
+
 .controls {
     list-style: none;
     padding: 12px 15px;    
 }
 
-.controls .row.from {
+/* Icone di traduzione e copy */
+.controls .row.from .icons {
     border-right: 1px solid #bbb;
     padding-right: 15px;
+}
+
+.controls .row.to .icons {
+    border-left: 1px solid #bbb;
+    padding-left: 15px;
 }
 
 .controls .icons i {
@@ -78,8 +99,10 @@ body {
     font-size: 14px;
     cursor: pointer;
     width: 50px;
+    justify-content: center;
 }
 
+/* Common rules per togliere bordi e background */
 .text-input textarea,
 .controls .row select {
     border: none;
@@ -87,10 +110,12 @@ body {
     background: none;
 }
 
+/* I select della lingua */
 .controls .row select {
     font-size: 18px;
 }
 
+/* Icona di traslazione */
 .controls .exchange {
     color: #9f9f9f;
     font-size: 16px;
