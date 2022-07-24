@@ -23,12 +23,12 @@ translateBtn = document.querySelector("button") // Questo è il mio button
 
 /* #16 - Seleziono la mia row e le icone a lei associate (quindi copy e vocale) */
 icons = document.querySelectorAll(".row i");
-console.log(icons); // #16.1 - Verifica in console
+/* console.log(icons); */ // #16.1 - Verifica in console
 
 
 /* #3 - Avvio ciclo forEach all'interno del select per verificare tutte le opzioni disponibili */
 /* Le prende tutte, sia dall'lato utente sia dal lato risposta PC */
-selectTag.forEach((tag, id) => {
+selectTag.forEach((tag, id, country) => {
     /* console.log(tag); */
     /* #4 - Grazie al ciclo for, seleziono ogni paese presente al mio oggetto countries.js */
     for (const country_code in countries) {
@@ -45,7 +45,7 @@ selectTag.forEach((tag, id) => {
         // #6 - Inserimento dinamico delle mie opzioni
         // #10 - aggiunta del mio valore selected alle opzioni
         let option = `<option value="${country_code}" ${selected}>${countries[country_code]}</option>`
-        tag.insertAdjacentHTML("beforeend", option) // #7 - Aggiunto a select il mio singolo tag ciclato
+        tag.insertAdjacentHTML("beforeend", option) // #7 - Aggiunto a select il mio singolo tag ciclato 
     }
 })
 
@@ -64,10 +64,10 @@ exchangeIcon.addEventListener("click", () => {
 translateBtn.addEventListener("click", () => {
     /* console.log("Ciao, mi stai premendo"); */ // #12.1 - Verifico il corretto funzionamento al click
     let text = fromText.value; // #12.4 - alla mia variabile text "appendo" il valore della textarea dell'utente grazie a Value
-    console.log(text); // #12.5 - Verifico in console la mia variabile    
+    /* console.log(text); */ // #12.5 - Verifico in console la mia variabile    
     translateFrom = selectTag[0].value // #12.6 - prendo, dal div from il valore del tag
     translateTo = selectTag[1].value // #12.7 - prendo, dal div to il valore del tag
-    console.log(`Questi sono le options che ho selezionato : ${translateFrom} | ${translateTo}`); // #12.8 - effettuo una verifica nel console
+    /* console.log(`Questi sono le options che ho selezionato : ${translateFrom} | ${translateTo}`); */ // #12.8 - effettuo una verifica nel console
 
     toText.setAttribute("placeholder", "Sto traducendo...") // Se appunto non ha testo lascio un messaggio come placeholder
 
@@ -86,7 +86,7 @@ translateBtn.addEventListener("click", () => {
         /* #13.2 - Avvio il fetch per la mia api con le promise  */
         fetch(apiURL).then(res => res.json()).then(data => {
             // #13.3 - res è il mio responso e viene richiamato e salvato come file json
-            console.log(data); // #13.4 - Verifico il mio responso. dentro a responseData in effetti, la mia variabile "translatedText" ha tradotto il testo
+            /* console.log(data); */ // #13.4 - Verifico il mio responso. dentro a responseData in effetti, la mia variabile "translatedText" ha tradotto il testo
             toText.value = data.responseData.translatedText // #14.2 - Alla mia textarea riservata al risultato aggiungo il valore della mia traduzione
             toText.setAttribute("placeholder", "Translation")
         })
