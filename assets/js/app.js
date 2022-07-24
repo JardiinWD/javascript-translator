@@ -91,11 +91,24 @@ icons.forEach(icon => {
         if (target.classList.contains("fa-copy")) {
             // #16.7 - SE l'id della mia icona è FROM
             if (target.id == "from") {
-                console.log("Questa è un'icona in from");
+                /* console.log("Questa è un'icona copy in from"); */ // Verifica in console
+                navigator.clipboard.writeText(fromText.value) // #17.3 Al click del copia io prendo valore nella textarea
             }
             // #16.8 - ALTRIMENTI SE l'id della mia icona è TO
             else if (target.id == "to") {
-                console.log("Questa è un'icona in To");
+                /* console.log("Questa è un'icona copy in To"); */ // Verifica in console
+                navigator.clipboard.writeText(fromText.value) // #17.4 Al click del copia io prendo il valore nella textarea
+            }
+        }
+        /* #17 - Aggiungo la medesima condizione per l'icona del volume */
+        else if (target.classList.contains("fa-volume-high")) {
+            // #17.1 - SE l'id della mia icona è FROM
+            if (target.id == "from") {
+                console.log("Questa è un'icona volume in from"); // Verifica in console
+            }
+            // #17.2 - ALTRIMENTI SE l'id della mia icona è TO
+            else if (target.id == "to") {
+                console.log("Questa è un'icona volume in To"); // Verifica in console
             }
         }
     })
