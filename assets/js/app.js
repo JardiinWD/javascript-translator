@@ -17,11 +17,15 @@ selectTag = document.querySelectorAll("select") // Tag select (query selector al
 
 /* #15 - Pulsante centrale per cambio valore al click */
 exchangeIcon = document.querySelector(".exchange")
-console.log(exchangeIcon); // #15.1 Verifico in console
+/* console.log(exchangeIcon); */ // #15.1 Verifico in console
 
 /* #11 - Seleziono il mio button che sarà l'artefice della mia traduzione */
 translateBtn = document.querySelector("button") // Questo è il mio button
 /* console.log(translateBtn); */ // #11.1 - Verifica del mio button in console
+
+/* #16 - Seleziono la mia row e le icone a lei associate (quindi copy e vocale) */
+icons = document.querySelectorAll(".row i");
+console.log(icons); // #16.1 - Verifica in console
 
 
 /* #3 - Avvio ciclo forEach all'interno del select per verificare tutte le opzioni disponibili */
@@ -56,9 +60,7 @@ exchangeIcon.addEventListener("click", () => {
     selectTag[0].value = selectTag[1].value // #15.8 - Ora switcho il valore dei miei option
     selectTag[1].value = tempLang // #15.9 - In questo modo ho cambiato il valore
     toText.value = tempText // #15.6 - La variabile salvata inizialmente prende il posto di toText
-
 })
-
 
 /* #12 - Scateno un evento al click del mio button */
 translateBtn.addEventListener("click", () => {
@@ -78,3 +80,24 @@ translateBtn.addEventListener("click", () => {
         toText.value = data.responseData.translatedText // #14.2 - Alla mia textarea riservata al risultato aggiungo il valore della mia traduzione
     })
 })
+
+/*#16.2 - avvio forEach per la selezione di icone */
+icons.forEach(icon => {
+    /* #16.3 - Scateno evento al click e, grazie a target, riesco a identificare ogni icona cliccata */
+    icon.addEventListener("click", ({ target }) => {
+        /* console.log(target); */ // #16.4 - Verifica in console
+
+        /* #16.5 - Avvio la condizione nel caso venga cliccato sul copy */
+        if (target.classList.contains("fa-copy")) {
+            // #16.7 - SE l'id della mia icona è FROM
+            if (target.id == "from") {
+                console.log("Questa è un'icona in from");
+            }
+            // #16.8 - ALTRIMENTI SE l'id della mia icona è TO
+            else if (target.id == "to") {
+                console.log("Questa è un'icona in To");
+            }
+        }
+    })
+})
+
