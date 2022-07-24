@@ -1,8 +1,6 @@
 /*# -> commenti contrassegnati con hashtag sono i percorsi fatti per raggiungere il funzionamento dell'app  */
 
 
-/* alert("Ciao, sono collegato") */
-
 /* #12.2 - Prendo il mio div con la text-area dove l'utente digita */
 const fromText = document.querySelector(".from-text") // querySelector è più specifico in questo caso
 /* console.log(fromText); */ // #12.3 - Verifico il div che ho preso
@@ -71,14 +69,28 @@ translateBtn.addEventListener("click", () => {
     translateTo = selectTag[1].value // #12.7 - prendo, dal div to il valore del tag
     console.log(`Questi sono le options che ho selezionato : ${translateFrom} | ${translateTo}`); // #12.8 - effettuo una verifica nel console
 
+    toText.setAttribute("placeholder", "Sto traducendo...") // Se appunto non ha testo lascio un messaggio come placeholder
+
     /* #13 - richiamo l'api necessaria per tradurre da MyMemory . Max di 5000 parole al giorno */
     let apiURL = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}` // #13.1 - Cambio i parametri della mia query 
-    /* #13.2 - Avvio il fetch per la mia api con le promise  */
-    fetch(apiURL).then(res => res.json()).then(data => {
-        // #13.3 - res è il mio responso e viene richiamato e salvato come file json
-        console.log(data); // #13.4 - Verifico il mio responso. dentro a responseData in effetti, la mia variabile "translatedText" ha tradotto il testo
-        toText.value = data.responseData.translatedText // #14.2 - Alla mia textarea riservata al risultato aggiungo il valore della mia traduzione
-    })
+
+    /* #18 - Condizione di non chiamata API se l'area è vuota */
+    /* if (!text) return; */
+    /* #18.1 - Se l'utente non ha messo niente non faccio partire l'API */
+    if (fromText.value === "") {
+        /* console.log("Qua è vuoto"); */
+        toText.setAttribute("placeholder", "Inserisci una parola o una frase per poterla tradurre")
+    }
+    else {
+        console.log("Qua c'è qualcosa");
+        /* #13.2 - Avvio il fetch per la mia api con le promise  */
+        fetch(apiURL).then(res => res.json()).then(data => {
+            // #13.3 - res è il mio responso e viene richiamato e salvato come file json
+            console.log(data); // #13.4 - Verifico il mio responso. dentro a responseData in effetti, la mia variabile "translatedText" ha tradotto il testo
+            toText.value = data.responseData.translatedText // #14.2 - Alla mia textarea riservata al risultato aggiungo il valore della mia traduzione
+            toText.setAttribute("placeholder", "Translation")
+        })
+    }
 })
 
 /*#16.2 - avvio forEach per la selezione di icone */
@@ -88,7 +100,7 @@ icons.forEach(icon => {
         /* console.log(target); */ // #16.4 - Verifica in console
 
         /* #16.5 - Avvio la condizione nel caso venga cliccato sul copy */
-        if (target.classList.contains("fa-copy")) {
+        if (target.classList.contains("fa-copy") && fromText.value !== 0) {
             // #16.7 - SE l'id della mia icona è FROM
             if (target.id == "from") {
                 /* console.log("Questa è un'icona copy in from"); */ // Verifica in console
@@ -101,7 +113,7 @@ icons.forEach(icon => {
             }
         }
         /* #17 - Aggiungo la medesima condizione per l'icona del volume */
-        else if (target.classList.contains("fa-volume-high")) {
+        else if (target.classList.contains("fa-volume-high") && fromText.value !== 0) {
             // #17.1 - SE l'id della mia icona è FROM
             // #17.5 - Inizializzo (ma non dichiaro )
             let utterance;
