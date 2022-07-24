@@ -4,24 +4,24 @@
 /* alert("Ciao, sono collegato") */
 
 /* #12.2 - Prendo il mio div con la text-area dove l'utente digita */
-const fromText = document.querySelector(".from-text") // querySelector è più specifico e va a pescare proprio la mia text area nel div
+const fromText = document.querySelector(".from-text") // querySelector è più specifico in questo caso
 /* console.log(fromText); */ // #12.3 - Verifico il div che ho preso
 
 /* #14 - Prendo il mio div con la textarea del risultato traduzione (to-text) */
 toText = document.querySelector(".to-text")
 /* console.log(toText); */ // #14.1 - Verifica della mia costante in console
 
-
 /* #1 - Prendo il tag select, quello con le opzioni linguistiche  */
 selectTag = document.querySelectorAll("select") // Tag select (query selector all è meno specifico, prende in questo caso tutti i miei select)
 /* console.log(selectTag); */ // #2 verifico il tag select
 
+/* #15 - Pulsante centrale per cambio valore al click */
+exchangeIcon = document.querySelector(".exchange")
+console.log(exchangeIcon); // #15.1 Verifico in console
 
 /* #11 - Seleziono il mio button che sarà l'artefice della mia traduzione */
 translateBtn = document.querySelector("button") // Questo è il mio button
 /* console.log(translateBtn); */ // #11.1 - Verifica del mio button in console
-
-
 
 
 /* #3 - Avvio ciclo forEach all'interno del select per verificare tutte le opzioni disponibili */
@@ -46,6 +46,19 @@ selectTag.forEach((tag, id) => {
         tag.insertAdjacentHTML("beforeend", option) // #7 - Aggiunto a select il mio singolo tag ciclato
     }
 })
+
+/* #15.2 - Scateno un evento al click del mio button exchange per fargli cambiare testo e invertire */
+exchangeIcon.addEventListener("click", () => {
+    /* console.log("Stai cliccando il tasto exchange"); */ // #15.3 - Verifico in console
+    let tempText = fromText.value; // #15.4 - Salvo il mio valore input utente in una variabile
+    tempLang = selectTag[0].value // #15.7 - Cambio anche il valore dell'option
+    fromText.value = toText.value // #15.5 - Dichiaro uguaglianza tra il mio from e to text 
+    selectTag[0].value = selectTag[1].value // #15.8 - Ora switcho il valore dei miei option
+    selectTag[1].value = tempLang // #15.9 - In questo modo ho cambiato il valore
+    toText.value = tempText // #15.6 - La variabile salvata inizialmente prende il posto di toText
+
+})
+
 
 /* #12 - Scateno un evento al click del mio button */
 translateBtn.addEventListener("click", () => {
