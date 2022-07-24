@@ -97,19 +97,29 @@ icons.forEach(icon => {
             // #16.8 - ALTRIMENTI SE l'id della mia icona è TO
             else if (target.id == "to") {
                 /* console.log("Questa è un'icona copy in To"); */ // Verifica in console
-                navigator.clipboard.writeText(fromText.value) // #17.4 Al click del copia io prendo il valore nella textarea
+                navigator.clipboard.writeText(toText.value) // #17.4 Al click del copia io prendo il valore nella textarea
             }
         }
         /* #17 - Aggiungo la medesima condizione per l'icona del volume */
         else if (target.classList.contains("fa-volume-high")) {
             // #17.1 - SE l'id della mia icona è FROM
+            // #17.5 - Inizializzo (ma non dichiaro )
+            let utterance;
             if (target.id == "from") {
-                console.log("Questa è un'icona volume in from"); // Verifica in console
+                /* console.log("Questa è un'icona volume in from"); */ // Verifica in console
+                /* #17.6 - IMPORTANTE, funzione nuova e interna a JS per il ripetitore vocale */
+                utterance = new SpeechSynthesisUtterance(fromText.value)
+                utterance.lang = selectTag[0].value // Imposto il linguaggio al mio traduttore
             }
             // #17.2 - ALTRIMENTI SE l'id della mia icona è TO
             else if (target.id == "to") {
-                console.log("Questa è un'icona volume in To"); // Verifica in console
+                /* console.log("Questa è un'icona volume in To"); */ // Verifica in console
+                /* #17.7 - Faccio la stessa cosa con il testo dell'area PC */
+                utterance = new SpeechSynthesisUtterance(toText.value)
+                utterance.lang = selectTag[1].value // Imposto il linguaggio al mio traduttore
             }
+            /* #17.8 - La mia variabile utterance finisce nella funzione speecSynthesis */
+            speechSynthesis.speak(utterance)
         }
     })
 })
