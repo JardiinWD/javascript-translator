@@ -51,4 +51,11 @@ translateBtn.addEventListener("click", () => {
     translateFrom = selectTag[0].value // #12.6 - prendo, dal div from il valore del tag
     translateTo = selectTag[1].value // #12.7 - prendo, dal div to il valore del tag
     console.log(`Questi sono le options che ho selezionato : ${translateFrom} | ${translateTo}`); // #12.8 - effettuo una verifica nel console
+
+    /* #13 - richiamo l'api necessaria per tradurre da MyMemory . Max di 5000 parole al giorno */
+    let apiURL = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}` // #13.1 - Cambio i parametri della mia query 
+    /* #13.2 - Avvio il fetch per la mia api con le promise  */
+    fetch(apiURL).then(res => res.json()).then(data => {
+        console.log(data); // #13.3 - Verifico il mio responso. dentro a responseData in effetti, la mia variabile "translatedText" ha tradotto il testo
+    })
 })
