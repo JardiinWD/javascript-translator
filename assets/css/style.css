@@ -11,9 +11,98 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #5372f0;
+}
+/*#endregion */
+
+/*#region Container Rules */
+.container {
+    width: 700px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+/*#region Wrapper Rules */
+.wrapper {
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+/*#endregion Wrapper Rules */
+
+/*#region text-input Rules */
+.wrapper .text-input {
+    display: flex;
+    border-bottom: 1px solid #bbb;
+}
+
+.text-input .to-text {
+    border-left: 1px solid #bbb;
+    border-radius: 0px;
+}
+
+.text-input textarea {
+    height: 250px;
+    width: 100%;
+    font-size: 18px;
+    resize: none; /* Cosi tolgo a text area la possibilità di cambiare */
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+/*#endregion text-input Rules */
+
+/*#region Controls icons Rules */
+.controls, li, .icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.controls {
+    list-style: none;
+    padding: 12px 15px;    
+}
+
+.controls .row.from {
+    border-right: 1px solid #bbb;
+    padding-right: 15px;
+}
+
+.controls .icons i {
+    color: #9f9f9f;
+    font-size: 14px;
+    cursor: pointer;
+    width: 50px;
+}
+
+.text-input textarea,
+.controls .row select {
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.controls .row select {
+    font-size: 18px;
+}
+
+.controls .exchange {
+    color: #9f9f9f;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.controls .icons {
+    width: 38%;
+}
 
 
-
+/*#endregion Controls icons Rules */
 
 
 /*#endregion */
